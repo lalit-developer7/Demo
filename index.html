@@ -34,69 +34,144 @@
     </script>
 
     <style>
-        /* Mobile Horizontal Overflow Fix */
+        /* Mobile Horizontal Overflow & Cut-off Fixes */
         html, body {
             max-width: 100%;
             overflow-x: hidden !important;
+            margin: 0;
+            padding: 0;
         }
 
-        /* Hero Background Overlay */
-        .hero-bg {
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.88) 0%, rgba(4, 120, 87, 0.75) 100%), 
-                        url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=2000') center/cover no-repeat;
+        /* Animated Hero Background Gradient & Zoom Effect */
+        .hero-bg-animated {
+            position: relative;
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(4, 120, 87, 0.8) 100%);
+            overflow: hidden;
         }
 
-        /* Standardized Premium Buttons */
-        .btn-primary {
+        .hero-bg-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            animation: heroZoom 18s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroZoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        /* Glowing Floating Balls Animation */
+        .glow-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            pointer-events: none;
+            animation: orbFloat 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes orbFloat {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(30px, -40px) scale(1.15); }
+        }
+
+        /* Typing & Shimmer Typography Effects */
+        .typing-cursor::after {
+            content: '|';
+            animation: blink 0.8s infinite;
+            color: #F3E5AB;
+            margin-left: 2px;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .gold-shimmer {
+            background: linear-gradient(90deg, #D4AF37 0%, #FFF5C0 50%, #D4AF37 100%);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            background-clip: text;
+            animation: shimmer 4s linear infinite;
+        }
+
+        @keyframes shimmer {
+            to { background-position: 200% center; }
+        }
+
+        /* Standardized Compact Animated Buttons */
+        .btn-animated-primary {
             background: linear-gradient(135deg, #059669 0%, #047857 100%);
             color: #ffffff;
             font-weight: 700;
-            border-radius: 0.75rem; /* 12px */
-            box-shadow: 0 4px 15px rgba(5, 150, 105, 0.25);
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 0.375rem;
+            position: relative;
+            overflow: hidden;
         }
 
-        .btn-primary:hover {
+        .btn-animated-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-animated-primary:hover::before {
+            left: 100%;
+        }
+
+        .btn-animated-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(5, 150, 105, 0.4);
-            background: linear-gradient(135deg, #047857 0%, #065f46 100%);
+            box-shadow: 0 6px 18px rgba(5, 150, 105, 0.4);
         }
 
-        .btn-secondary {
-            background: #ffffff;
-            color: #0F172A;
-            font-weight: 700;
-            border: 1px solid #CBD5E1;
-            border-radius: 0.75rem;
+        .btn-animated-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(8px);
+            border-radius: 0.5rem;
             transition: all 0.3s ease;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 0.5rem;
+            gap: 0.375rem;
         }
 
-        .btn-secondary:hover {
+        .btn-animated-secondary:hover {
+            background: rgba(255, 255, 255, 0.25);
             border-color: #059669;
-            color: #059669;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            color: #ffffff;
             transform: translateY(-2px);
         }
 
         .whatsapp-float {
             position: fixed;
-            bottom: 24px;
-            right: 20px;
+            bottom: 20px;
+            right: 16px;
             z-index: 999;
             animation: pulseGreen 2s infinite;
         }
 
         @keyframes pulseGreen {
             0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
+            70% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
             100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
     </style>
@@ -106,27 +181,27 @@
     <!-- Floating WhatsApp Action Button -->
     <a href="https://wa.me/9192multiservicesindia?text=Hi%20Multi%20Decor,%20I%20want%20to%20inquire%20about%20your%20interior%20and%20ceiling%20services." 
        target="_blank" 
-       class="whatsapp-float bg-emerald-500 text-white w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center text-2xl sm:text-3xl shadow-2xl hover:scale-110 transition-transform" 
+       class="whatsapp-float bg-emerald-500 text-white w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center text-xl sm:text-2xl shadow-xl hover:scale-110 transition-transform" 
        title="Chat on WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 
     <!-- Navigation Bar -->
-    <header class="fixed top-0 left-0 right-0 z-50 px-4 py-3 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
-        <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <header class="fixed top-0 left-0 right-0 z-50 px-3 py-2.5 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
             <!-- Brand Logo -->
-            <a href="#" class="flex items-center gap-3 group">
-                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 via-emerald-500 to-amber-400 flex items-center justify-center text-white text-xl font-black shadow-md group-hover:rotate-6 transition-transform">
-                    <i class="fas fa-couch text-sm"></i>
+            <a href="#" class="flex items-center gap-2 group shrink-0">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-emerald-600 via-emerald-500 to-amber-400 flex items-center justify-center text-white text-sm font-black shadow-md group-hover:rotate-6 transition-transform">
+                    <i class="fas fa-couch"></i>
                 </div>
                 <div>
-                    <span class="font-black text-lg sm:text-xl text-slate-900 block leading-none tracking-tight">Multi Decor</span>
-                    <span class="text-[10px] text-emerald-700 font-extrabold uppercase tracking-widest block mt-0.5">Luxury Interiors & Ceilings</span>
+                    <span class="font-extrabold text-base sm:text-lg text-slate-900 block leading-none tracking-tight">Multi Decor</span>
+                    <span class="text-[9px] text-emerald-700 font-bold uppercase tracking-widest block mt-0.5">Pune, MH, India</span>
                 </div>
             </a>
 
             <!-- Extended Desktop Menu -->
-            <nav class="hidden lg:flex items-center gap-7 text-xs font-bold uppercase tracking-wider text-slate-700">
+            <nav class="hidden lg:flex items-center gap-6 text-[11px] font-bold uppercase tracking-wider text-slate-700">
                 <a href="#home" class="hover:text-emeraldBrand transition-colors">Home</a>
                 <a href="#about" class="hover:text-emeraldBrand transition-colors">About Us</a>
                 <a href="#services" class="hover:text-emeraldBrand transition-colors">Services</a>
@@ -137,102 +212,99 @@
             </nav>
 
             <!-- Actions -->
-            <div class="flex items-center gap-2">
-                <a href="mailto:noreplay@gmail.com" class="hidden sm:inline-flex btn-secondary px-3.5 py-2 text-xs">
+            <div class="flex items-center gap-2 shrink-0">
+                <a href="mailto:noreplay@gmail.com" class="hidden sm:inline-flex btn-animated-secondary px-3 py-1.5 text-xs text-slate-800 border-slate-300">
                     <i class="fas fa-envelope text-emerald-600"></i> Email Us
                 </a>
-                <a href="https://wa.me/9192multiservicesindia" target="_blank" class="btn-primary px-4 py-2 text-xs sm:text-sm">
-                    <i class="fab fa-whatsapp text-base"></i> Get Quote
+                <a href="https://wa.me/9192multiservicesindia" target="_blank" class="btn-animated-primary px-3.5 py-1.5 text-xs">
+                    <i class="fab fa-whatsapp text-sm"></i> Get Quote
                 </a>
             </div>
         </div>
     </header>
 
-    <!-- Animated Hero Section -->
-    <section id="home" class="hero-bg pt-28 sm:pt-36 pb-20 px-4 sm:px-6 text-white relative min-h-[90vh] flex items-center">
-        <!-- Background Glowing Elements -->
-        <div class="absolute top-1/4 left-10 w-72 h-72 bg-emerald-500/20 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute bottom-10 right-10 w-96 h-96 bg-amber-500/15 rounded-full blur-3xl pointer-events-none"></div>
+    <!-- Animated Premium Hero Section -->
+    <section id="home" class="hero-bg-animated pt-24 sm:pt-28 pb-16 px-4 text-white relative min-h-[85vh] flex items-center">
+        <!-- Animated Background Image -->
+        <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=2000" alt="Luxury Ceiling Background" class="hero-bg-image">
 
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10 w-full">
+        <!-- Dark Gradient Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-900/85 to-slate-950/90 z-0"></div>
+
+        <!-- Floating Orbs -->
+        <div class="glow-orb top-10 left-10 w-48 h-48 bg-emerald-500/25 z-0"></div>
+        <div class="glow-orb bottom-10 right-10 w-64 h-64 bg-amber-500/20 z-0"></div>
+
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10 w-full">
             
             <div class="lg:col-span-7" data-aos="fade-right">
-                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs font-bold mb-4 backdrop-blur-md">
-                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-                    Premium Interior & Ceiling Specialist Pune
+                <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-[11px] font-bold mb-3 backdrop-blur-md">
+                    <i class="fas fa-location-dot text-amber-400 text-xs"></i>
+                    <span>Pune, Maharashtra, India</span>
                 </div>
 
-                <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-5">
-                    Crafting <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-amber-200 to-amber-400">Architectural Elegance</span> For Your Spaces
+                <!-- Animated Typo Headline -->
+                <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-3">
+                    <span id="animatedText" class="gold-shimmer typing-cursor"></span>
                 </h1>
 
-                <p class="text-slate-200 font-normal text-sm sm:text-base lg:text-lg mb-8 leading-relaxed max-w-2xl">
-                    Multi Decor turns apartments and commercial spaces into modern luxury retreats. From heavy-duty Gypsum False Ceilings to ambient profile lighting and customized woodwork.
+                <p class="text-slate-300 font-normal text-xs sm:text-sm lg:text-base mb-6 leading-relaxed max-w-xl">
+                    Multi Decor turns apartments and commercial spaces into modern luxury retreats across Pune. Specialized in heavy-duty Gypsum False Ceilings, profile lights, and woodwork.
                 </p>
 
-                <!-- Universal Buttons -->
-                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-                    <a href="https://wa.me/9192multiservicesindia" target="_blank" class="btn-primary px-7 py-4 text-sm sm:text-base">
-                        <i class="fab fa-whatsapp text-xl"></i> Instant Quote on WhatsApp
+                <!-- Compact Animated Action Buttons -->
+                <div class="flex flex-wrap items-center gap-3">
+                    <a href="https://wa.me/9192multiservicesindia" target="_blank" class="btn-animated-primary px-4 py-2.5 text-xs sm:text-sm">
+                        <i class="fab fa-whatsapp text-base"></i> Instant WhatsApp Quote
                     </a>
-                    <button onclick="openModal('Gypsum Ceiling Special', 'Standard rate starts at ₹120 / sq.ft including high-density Saint-Gobain gypsum boards, GI channel framing, tape jointing, and dual coat smooth finishing.', 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1000')" class="btn-secondary px-6 py-4 text-sm sm:text-base">
-                        <i class="fas fa-eye text-emerald-600"></i> View Pricing Offer
+                    <button onclick="openModal('Gypsum Ceiling Special', 'Standard rate starts at ₹120 / sq.ft including high-density Saint-Gobain gypsum boards, GI channel framing, tape jointing, and dual coat smooth finishing.', 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1000')" class="btn-animated-secondary px-4 py-2.5 text-xs sm:text-sm">
+                        <i class="fas fa-eye text-emerald-400"></i> View Rate Offer
                     </button>
                 </div>
 
-                <!-- Live Metrics -->
-                <div class="grid grid-cols-3 gap-4 mt-10 pt-6 border-t border-slate-700/60 text-center sm:text-left">
+                <!-- Metrics Panel -->
+                <div class="grid grid-cols-3 gap-3 mt-8 pt-4 border-t border-slate-700/60 max-w-lg">
                     <div>
-                        <p class="text-2xl sm:text-3xl font-extrabold text-amber-400">450+</p>
-                        <p class="text-[11px] sm:text-xs text-slate-300 font-medium">Projects Delivered</p>
+                        <p class="text-xl sm:text-2xl font-extrabold text-amber-400">450+</p>
+                        <p class="text-[10px] sm:text-xs text-slate-300 font-medium">Pune Projects</p>
                     </div>
                     <div>
-                        <p class="text-2xl sm:text-3xl font-extrabold text-emerald-400">₹120</p>
-                        <p class="text-[11px] sm:text-xs text-slate-300 font-medium">Per Sq.Ft Onwards</p>
+                        <p class="text-xl sm:text-2xl font-extrabold text-emerald-400">₹120</p>
+                        <p class="text-[10px] sm:text-xs text-slate-300 font-medium">Per Sq.Ft Onwards</p>
                     </div>
                     <div>
-                        <p class="text-2xl sm:text-3xl font-extrabold text-amber-400">100%</p>
-                        <p class="text-[11px] sm:text-xs text-slate-300 font-medium">Quality Guaranteed</p>
+                        <p class="text-xl sm:text-2xl font-extrabold text-amber-400">100%</p>
+                        <p class="text-[10px] sm:text-xs text-slate-300 font-medium">Quality Finish</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Premium Modern Hero Card -->
+            <!-- Compact Glassmorphism Showcase Card -->
             <div class="lg:col-span-5" data-aos="fade-left">
-                <div class="relative group max-w-xl mx-auto">
-                    <!-- Subtle Golden Outer Glow Container -->
-                    <div class="absolute -inset-0.5 bg-gradient-to-r from-amber-500/30 via-emerald-500/20 to-amber-500/30 rounded-3xl blur-md opacity-60 group-hover:opacity-100 transition duration-500"></div>
-
-                    <!-- Main Premium Card Base -->
-                    <div class="relative bg-slate-900/90 backdrop-blur-xl p-3.5 sm:p-4 rounded-3xl border border-white/10 shadow-2xl overflow-hidden">
+                <div class="relative group max-w-md mx-auto">
+                    <div class="relative bg-slate-900/80 backdrop-blur-xl p-3 rounded-2xl border border-white/10 shadow-2xl overflow-hidden">
                         
-                        <!-- Image Container -->
-                        <div class="relative rounded-2xl overflow-hidden bg-slate-950">
-                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&amp;fit=crop&amp;q=80&amp;w=1000" 
+                        <div class="relative rounded-xl overflow-hidden bg-slate-950">
+                            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800" 
                                  alt="Multi Decor Interior" 
-                                 class="w-full h-72 sm:h-96 object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out">
+                                 class="w-full h-56 sm:h-72 object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out">
                             
-                            <!-- Sleek Top Pill Tag -->
-                            <div class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md border border-amber-400/30 px-3 py-1 rounded-full flex items-center gap-2 shadow-lg">
-                                <span class="w-2 h-2 rounded-full bg-amber-400"></span>
-                                <span class="text-amber-300 text-[10px] font-extrabold uppercase tracking-widest">Featured Masterpiece</span>
+                            <div class="absolute top-2.5 left-2.5 bg-slate-900/85 backdrop-blur-md border border-amber-400/30 px-2.5 py-0.5 rounded-full flex items-center gap-1.5 shadow-md">
+                                <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                                <span class="text-amber-300 text-[9px] font-bold uppercase tracking-wider">Featured Interior</span>
                             </div>
                         </div>
 
-                        <!-- Card Footer Panel -->
-                        <div class="mt-3.5 bg-slate-950/80 backdrop-blur-md p-4 rounded-2xl border border-slate-800/80 flex items-center justify-between gap-3">
+                        <div class="mt-3 bg-slate-950/70 backdrop-blur-md p-3 rounded-xl border border-slate-800 flex items-center justify-between gap-2">
                             <div>
-                                <span class="text-amber-400 text-[10px] font-black uppercase tracking-widest block mb-0.5">Interior Collection</span>
-                                <h3 class="font-extrabold text-sm sm:text-base text-white tracking-wide">Curved Hall Gypsum Ceiling</h3>
+                                <span class="text-amber-400 text-[9px] font-bold uppercase tracking-wider block">Pune Living Room</span>
+                                <h3 class="font-bold text-xs sm:text-sm text-white">Curved Hall Gypsum Ceiling</h3>
                             </div>
 
-                            <!-- Interactive Button -->
-                            <button onclick="openModal('Curved Hall Gypsum Ceiling', 'Features seamless indirect LED lighting slots, fire-retardant boards, and custom CNC cut paneling.', 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&amp;fit=crop&amp;q=80&amp;w=1000')" 
-                                    class="shrink-0 bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-500 hover:to-emerald-600 text-white font-bold px-4 py-2.5 rounded-xl text-xs border border-emerald-400/30 shadow-lg transition-all duration-300 flex items-center gap-2 active:scale-95">
+                            <button onclick="openModal('Curved Hall Gypsum Ceiling', 'Features seamless indirect LED lighting slots, fire-retardant boards, and custom CNC cut paneling.', 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1000')" 
+                                    class="shrink-0 bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-3 py-1.5 rounded-lg text-xs transition-all active:scale-95 flex items-center gap-1">
                                 <span>Inspect</span>
-                                <svg class="w-3.5 h-3.5 text-emerald-200" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
-                                </svg>
+                                <i class="fas fa-arrow-right text-[10px]"></i>
                             </button>
                         </div>
                     </div>
@@ -243,92 +315,89 @@
     </section>
 
     <!-- About Us Section -->
-    <section id="about" class="py-16 px-4 sm:px-6 bg-white">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+    <section id="about" class="py-14 px-4 bg-white">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div data-aos="fade-right">
-                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&q=80&w=1000" alt="About Multi Decor" class="rounded-2xl shadow-xl w-full h-80 sm:h-96 object-cover border border-slate-200">
+                <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&q=80&w=1000" alt="About Multi Decor" class="rounded-2xl shadow-lg w-full h-64 sm:h-80 object-cover border border-slate-200">
             </div>
             <div data-aos="fade-left">
                 <span class="text-emeraldBrand font-extrabold text-xs uppercase tracking-widest block mb-1">About Multi Decor</span>
-                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900 mb-4">Pune's Trusted Interior & False Ceiling Artisans</h2>
-                <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-4">
-                    At <strong>Multi Decor</strong>, we specialize in high-precision Gypsum False Ceiling installations, living room wall paneling, modular furniture, and custom architectural woodwork. 
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-3">Pune's Premier Interior & Ceiling Artisans</h2>
+                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-3">
+                    At <strong>Multi Decor</strong>, based in Pune, Maharashtra, India, we specialize in precision Gypsum False Ceiling installations, living room wall paneling, modular furniture, and custom woodwork.
                 </p>
-                <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
-                    We combine premium grade materials like Saint-Gobain Gyproc with modern LED profile light designs to turn ordinary ceilings into breathtaking architectural highlights.
+                <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-5">
+                    We combine high-grade materials like Saint-Gobain Gyproc with modern LED profile light designs to elevate homes and commercial offices.
                 </p>
                 
-                <div class="grid grid-cols-2 gap-4 mb-6">
-                    <div class="flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-800">
+                <div class="grid grid-cols-2 gap-3 mb-5">
+                    <div class="flex items-center gap-2 text-xs font-bold text-slate-800">
                         <i class="fas fa-check-circle text-emeraldBrand"></i> On-Time Completion
                     </div>
-                    <div class="flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-800">
-                        <i class="fas fa-check-circle text-emeraldBrand"></i> Certified Craftsmen
+                    <div class="flex items-center gap-2 text-xs font-bold text-slate-800">
+                        <i class="fas fa-check-circle text-emeraldBrand"></i> Skilled Craftsmen
                     </div>
-                    <div class="flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-800">
-                        <i class="fas fa-check-circle text-emeraldBrand"></i> Dust-Free Execution
+                    <div class="flex items-center gap-2 text-xs font-bold text-slate-800">
+                        <i class="fas fa-check-circle text-emeraldBrand"></i> Clean Execution
                     </div>
-                    <div class="flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-800">
+                    <div class="flex items-center gap-2 text-xs font-bold text-slate-800">
                         <i class="fas fa-check-circle text-emeraldBrand"></i> Transparent Pricing
                     </div>
                 </div>
 
-                <a href="https://wa.me/9192multiservicesindia" target="_blank" class="btn-primary px-6 py-3 text-sm">
+                <a href="https://wa.me/9192multiservicesindia" target="_blank" class="btn-animated-primary px-4 py-2 text-xs sm:text-sm">
                     <i class="fab fa-whatsapp"></i> Consult Our Designer
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Interactive Services Section -->
-    <section id="services" class="py-16 px-4 sm:px-6 bg-slate-100/80">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center max-w-2xl mx-auto mb-12" data-aos="fade-up">
+    <!-- Services Section -->
+    <section id="services" class="py-14 px-4 bg-slate-100/80">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center max-w-xl mx-auto mb-10" data-aos="fade-up">
                 <span class="text-emeraldBrand font-extrabold text-xs uppercase tracking-widest block mb-1">Interactive Services</span>
-                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900">Our Signature Solutions</h2>
-                <p class="text-slate-600 text-xs sm:text-sm mt-2">Click on any card below to view full specifications and image preview.</p>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Our Core Solutions</h2>
+                <p class="text-slate-600 text-xs mt-1">Click on any card below to view full specifications.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Service 1 -->
-                <div onclick="openModal('Gypsum False Ceiling', 'Includes Saint-Gobain Gypsum sheets, galvanised GI channels, jointing compound, and dual-layer primer preparation. Perfect for living rooms, bedrooms, and offices.', 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1000')" 
-                     class="bg-white/95 backdrop-blur-md p-6 rounded-2xl cursor-pointer hover:-translate-y-2 transition-all duration-300 group border border-slate-200 shadow-sm hover:shadow-lg" data-aos="fade-up">
-                    <div class="w-12 h-12 rounded-xl bg-emerald-100 text-emeraldBrand flex items-center justify-center text-xl font-bold mb-4 group-hover:scale-110 transition-transform">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <div onclick="openModal('Gypsum False Ceiling', 'Includes Saint-Gobain Gypsum sheets, galvanised GI channels, jointing compound, and dual-layer primer preparation. Perfect for living rooms, bedrooms, and offices in Pune.', 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1000')" 
+                     class="bg-white p-5 rounded-xl cursor-pointer hover:-translate-y-1 transition-all duration-300 group border border-slate-200 shadow-sm" data-aos="fade-up">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emeraldBrand flex items-center justify-center text-lg font-bold mb-3 group-hover:scale-110 transition-transform">
                         <i class="fas fa-layer-group"></i>
                     </div>
-                    <h3 class="font-bold text-lg text-slate-900 mb-2">Gypsum False Ceiling</h3>
-                    <p class="text-slate-600 text-xs sm:text-sm mb-4">Designer cove lighting, floating central steps, and LED profile light slots.</p>
+                    <h3 class="font-bold text-base text-slate-900 mb-1.5">Gypsum False Ceiling</h3>
+                    <p class="text-slate-600 text-xs mb-3">Designer cove lighting, floating central steps, and LED profile light slots.</p>
                     <div class="flex items-center justify-between text-xs font-bold text-emeraldBrand">
                         <span>Starting ₹120 / sq.ft</span>
-                        <span>Click for Details <i class="fas fa-chevron-right ml-1"></i></span>
+                        <span>Details <i class="fas fa-chevron-right ml-1 text-[10px]"></i></span>
                     </div>
                 </div>
 
-                <!-- Service 2 -->
                 <div onclick="openModal('Living Room & TV Wall Decor', 'Complete living room makeovers with charcoal fluted paneling, marble-finish PVC sheets, acoustic backing, and integrated LED backlight TV niches.', 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1000')" 
-                     class="bg-white/95 backdrop-blur-md p-6 rounded-2xl cursor-pointer hover:-translate-y-2 transition-all duration-300 group border border-slate-200 shadow-sm hover:shadow-lg" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl font-bold mb-4 group-hover:scale-110 transition-transform">
+                     class="bg-white p-5 rounded-xl cursor-pointer hover:-translate-y-1 transition-all duration-300 group border border-slate-200 shadow-sm" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center text-lg font-bold mb-3 group-hover:scale-110 transition-transform">
                         <i class="fas fa-tv"></i>
                     </div>
-                    <h3 class="font-bold text-lg text-slate-900 mb-2">Living Room & TV Wall Decor</h3>
-                    <p class="text-slate-600 text-xs sm:text-sm mb-4">Backlit marble PVC panels, fluted wall louvers, and modern media units.</p>
+                    <h3 class="font-bold text-base text-slate-900 mb-1.5">TV Wall Decor</h3>
+                    <p class="text-slate-600 text-xs mb-3">Backlit marble PVC panels, fluted wall louvers, and modern media units.</p>
                     <div class="flex items-center justify-between text-xs font-bold text-emeraldBrand">
                         <span>Custom Package</span>
-                        <span>Click for Details <i class="fas fa-chevron-right ml-1"></i></span>
+                        <span>Details <i class="fas fa-chevron-right ml-1 text-[10px]"></i></span>
                     </div>
                 </div>
 
-                <!-- Service 3 -->
                 <div onclick="openModal('Architectural Woodworks', 'Exterior teak wood ceilings, indoor slatted baffle ceilings, modular kitchen cabinets, and customized wardrobe carpentry.', 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=1000')" 
-                     class="bg-white/95 backdrop-blur-md p-6 rounded-2xl cursor-pointer hover:-translate-y-2 transition-all duration-300 group border border-slate-200 shadow-sm hover:shadow-lg" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-12 h-12 rounded-xl bg-slate-100 text-slate-800 flex items-center justify-center text-xl font-bold mb-4 group-hover:scale-110 transition-transform">
+                     class="bg-white p-5 rounded-xl cursor-pointer hover:-translate-y-1 transition-all duration-300 group border border-slate-200 shadow-sm" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-10 h-10 rounded-lg bg-slate-100 text-slate-800 flex items-center justify-center text-lg font-bold mb-3 group-hover:scale-110 transition-transform">
                         <i class="fas fa-tree"></i>
                     </div>
-                    <h3 class="font-bold text-lg text-slate-900 mb-2">Architectural Woodworks</h3>
-                    <p class="text-slate-600 text-xs sm:text-sm mb-4">Slatted wooden baffle ceilings, veneer paneling, and modular setups.</p>
+                    <h3 class="font-bold text-base text-slate-900 mb-1.5">Architectural Woodworks</h3>
+                    <p class="text-slate-600 text-xs mb-3">Slatted wooden baffle ceilings, veneer paneling, and modular setups.</p>
                     <div class="flex items-center justify-between text-xs font-bold text-emeraldBrand">
                         <span>Premium Grade</span>
-                        <span>Click for Details <i class="fas fa-chevron-right ml-1"></i></span>
+                        <span>Details <i class="fas fa-chevron-right ml-1 text-[10px]"></i></span>
                     </div>
                 </div>
             </div>
@@ -336,74 +405,71 @@
     </section>
 
     <!-- Detailed Pricing Section -->
-    <section id="pricing" class="py-16 px-4 sm:px-6 bg-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center max-w-2xl mx-auto mb-12" data-aos="fade-up">
+    <section id="pricing" class="py-14 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center max-w-xl mx-auto mb-10" data-aos="fade-up">
                 <span class="text-emeraldBrand font-extrabold text-xs uppercase tracking-widest block mb-1">Clear Rates</span>
-                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900">Transparent Pricing Packages</h2>
-                <p class="text-slate-600 text-xs sm:text-sm mt-2">No hidden costs. Full material specification included.</p>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Transparent Pricing Packages</h2>
+                <p class="text-slate-600 text-xs mt-1">No hidden costs for Pune site locations.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Plan 1 -->
-                <div class="border border-slate-200 rounded-2xl p-6 bg-slate-50 flex flex-col justify-between" data-aos="fade-up">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <div class="border border-slate-200 rounded-xl p-5 bg-slate-50 flex flex-col justify-between" data-aos="fade-up">
                     <div>
-                        <span class="text-xs font-extrabold text-emeraldBrand uppercase tracking-wider">Basic Standard</span>
-                        <h3 class="text-xl font-bold text-slate-900 mt-1 mb-4">Gypsum Ceiling</h3>
-                        <div class="mb-6">
-                            <span class="text-3xl font-extrabold text-slate-900">₹120</span>
+                        <span class="text-[10px] font-extrabold text-emeraldBrand uppercase tracking-wider">Basic Standard</span>
+                        <h3 class="text-lg font-bold text-slate-900 mt-1 mb-3">Gypsum Ceiling</h3>
+                        <div class="mb-4">
+                            <span class="text-2xl font-extrabold text-slate-900">₹120</span>
                             <span class="text-slate-500 text-xs font-bold">/ sq.ft</span>
                         </div>
-                        <ul class="space-y-3 text-xs sm:text-sm text-slate-600 mb-6">
-                            <li><i class="fas fa-check text-emeraldBrand mr-2"></i> Standard Gypsum Boards</li>
-                            <li><i class="fas fa-check text-emeraldBrand mr-2"></i> Galvanized Steel Frame</li>
-                            <li><i class="fas fa-check text-emeraldBrand mr-2"></i> Single Layer Cove Slot</li>
-                            <li><i class="fas fa-check text-emeraldBrand mr-2"></i> Smooth Surface Primer</li>
+                        <ul class="space-y-2 text-xs text-slate-600 mb-5">
+                            <li><i class="fas fa-check text-emeraldBrand mr-1.5"></i> Standard Gypsum Boards</li>
+                            <li><i class="fas fa-check text-emeraldBrand mr-1.5"></i> Galvanized Steel Frame</li>
+                            <li><i class="fas fa-check text-emeraldBrand mr-1.5"></i> Single Layer Cove Slot</li>
+                            <li><i class="fas fa-check text-emeraldBrand mr-1.5"></i> Smooth Surface Primer</li>
                         </ul>
                     </div>
-                    <a href="https://wa.me/9192multiservicesindia?text=I%20want%20Basic%20Gypsum%20Ceiling%20Package" target="_blank" class="btn-primary w-full py-3 text-xs">
+                    <a href="https://wa.me/9192multiservicesindia?text=I%20want%20Basic%20Gypsum%20Ceiling%20Package" target="_blank" class="btn-animated-primary w-full py-2 text-xs">
                         Book Basic Package
                     </a>
                 </div>
 
-                <!-- Plan 2 (Highlighted) -->
-                <div class="border-2 border-emeraldBrand rounded-2xl p-6 bg-white shadow-xl relative flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
-                    <span class="absolute -top-3.5 right-6 bg-emeraldBrand text-white text-[10px] font-black uppercase px-3 py-1 rounded-full shadow-md">Most Popular</span>
+                <div class="border-2 border-emeraldBrand rounded-xl p-5 bg-white shadow-lg relative flex flex-col justify-between" data-aos="fade-up" data-aos-delay="100">
+                    <span class="absolute -top-3 right-4 bg-emeraldBrand text-white text-[9px] font-black uppercase px-2.5 py-0.5 rounded-full shadow-sm">Most Popular</span>
                     <div>
-                        <span class="text-xs font-extrabold text-emeraldBrand uppercase tracking-wider">Designer Premium</span>
-                        <h3 class="text-xl font-bold text-slate-900 mt-1 mb-4">Ceiling + Profile LED</h3>
-                        <div class="mb-6">
-                            <span class="text-3xl font-extrabold text-slate-900">₹145</span>
+                        <span class="text-[10px] font-extrabold text-emeraldBrand uppercase tracking-wider">Designer Premium</span>
+                        <h3 class="text-lg font-bold text-slate-900 mt-1 mb-3">Ceiling + Profile LED</h3>
+                        <div class="mb-4">
+                            <span class="text-2xl font-extrabold text-slate-900">₹145</span>
                             <span class="text-slate-500 text-xs font-bold">/ sq.ft</span>
                         </div>
-                        <ul class="space-y-3 text-xs sm:text-sm text-slate-600 mb-6">
-                            <li><i class="fas fa-check text-emeraldBrand mr-2"></i> Saint-Gobain Heavy Board</li>
-                            <li><i class="fas fa-check text-emeraldBrand mr-2"></i> Recessed Aluminium Profile Channels</li>
-                            <li><i class="fas fa-check text-emeraldBrand mr-2"></i> Double Step Curved Designs</li>
-                            <li><i class="fas fa-check text-emeraldBrand mr-2"></i> Dual Layer Putty & Primer</li>
+                        <ul class="space-y-2 text-xs text-slate-600 mb-5">
+                            <li><i class="fas fa-check text-emeraldBrand mr-1.5"></i> Saint-Gobain Heavy Board</li>
+                            <li><i class="fas fa-check text-emeraldBrand mr-1.5"></i> Recessed Profile Channels</li>
+                            <li><i class="fas fa-check text-emeraldBrand mr-1.5"></i> Double Step Curved Designs</li>
+                            <li><i class="fas fa-check text-emeraldBrand mr-1.5"></i> Dual Layer Putty Finish</li>
                         </ul>
                     </div>
-                    <a href="https://wa.me/9192multiservicesindia?text=I%20want%20Designer%20Premium%20Package" target="_blank" class="btn-primary w-full py-3 text-xs">
+                    <a href="https://wa.me/9192multiservicesindia?text=I%20want%20Designer%20Premium%20Package" target="_blank" class="btn-animated-primary w-full py-2 text-xs">
                         Book Premium Package
                     </a>
                 </div>
 
-                <!-- Plan 3 -->
-                <div class="border border-slate-200 rounded-2xl p-6 bg-slate-50 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
+                <div class="border border-slate-200 rounded-xl p-5 bg-slate-50 flex flex-col justify-between" data-aos="fade-up" data-aos-delay="200">
                     <div>
-                        <span class="text-xs font-extrabold text-amber-600 uppercase tracking-wider">Luxury Signature</span>
-                        <h3 class="text-xl font-bold text-slate-900 mt-1 mb-4">Complete Interior</h3>
-                        <div class="mb-6">
-                            <span class="text-2xl font-extrabold text-slate-900">Custom Quote</span>
+                        <span class="text-[10px] font-extrabold text-amber-600 uppercase tracking-wider">Luxury Signature</span>
+                        <h3 class="text-lg font-bold text-slate-900 mt-1 mb-3">Complete Interior</h3>
+                        <div class="mb-4">
+                            <span class="text-xl font-extrabold text-slate-900">Custom Quote</span>
                         </div>
-                        <ul class="space-y-3 text-xs sm:text-sm text-slate-600 mb-6">
-                            <li><i class="fas fa-check text-emeraldBrand mr-2"></i> Wooden Baffle & Ceiling Panel</li>
-                            <li><i class="fas fa-check text-emeraldBrand mr-2"></i> Backlit Marble PVC TV Units</li>
-                            <li><i class="fas fa-check text-emeraldBrand mr-2"></i> Custom Fluted Louvers</li>
-                            <li><i class="fas fa-check text-emeraldBrand mr-2"></i> Turnkey Architectural Lighting</li>
+                        <ul class="space-y-2 text-xs text-slate-600 mb-5">
+                            <li><i class="fas fa-check text-emeraldBrand mr-1.5"></i> Wooden Baffle & Ceiling Panel</li>
+                            <li><i class="fas fa-check text-emeraldBrand mr-1.5"></i> Backlit Marble PVC TV Units</li>
+                            <li><i class="fas fa-check text-emeraldBrand mr-1.5"></i> Custom Fluted Louvers</li>
+                            <li><i class="fas fa-check text-emeraldBrand mr-1.5"></i> Turnkey Architectural Lighting</li>
                         </ul>
                     </div>
-                    <a href="https://wa.me/9192multiservicesindia?text=I%20want%20Custom%20Luxury%20Interior%20Quote" target="_blank" class="btn-secondary w-full py-3 text-xs">
+                    <a href="https://wa.me/9192multiservicesindia?text=I%20want%20Custom%20Luxury%20Interior%20Quote" target="_blank" class="btn-animated-secondary w-full py-2 text-xs text-slate-800 border-slate-300">
                         Request Quote
                     </a>
                 </div>
@@ -412,55 +478,52 @@
     </section>
 
     <!-- Gallery Section -->
-    <section id="gallery" class="py-16 px-4 sm:px-6 bg-slate-100/80">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 gap-4">
+    <section id="gallery" class="py-14 px-4 bg-slate-100/80">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 gap-3">
                 <div>
                     <span class="text-emeraldBrand font-extrabold text-xs uppercase tracking-widest block mb-1">Photo Gallery</span>
-                    <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900">Recent Projects Showcase</h2>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Recent Projects Showcase</h2>
                 </div>
-                <a href="https://wa.me/9192multiservicesindia" target="_blank" class="btn-secondary px-4 py-2 text-xs">
+                <a href="https://wa.me/9192multiservicesindia" target="_blank" class="btn-animated-secondary px-3.5 py-1.5 text-xs text-slate-800 border-slate-300">
                     View Complete Catalog <i class="fas fa-arrow-right ml-1"></i>
                 </a>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Gallery Item 1 -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 <div onclick="openModal('Modern Living Hall Ceiling', 'Curved gypsum false ceiling with warm yellow indirect cove lighting and recessed LED spotlights.', 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1000')" 
-                     class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200 cursor-pointer group" data-aos="fade-up">
-                    <div class="h-60 overflow-hidden relative">
+                     class="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200 cursor-pointer group" data-aos="fade-up">
+                    <div class="h-48 overflow-hidden relative">
                         <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800" alt="Living Hall Ceiling" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <span class="absolute top-3 right-3 bg-emeraldBrand text-white font-black text-[10px] px-2.5 py-1 rounded-full">₹120/sq.ft</span>
+                        <span class="absolute top-2.5 right-2.5 bg-emeraldBrand text-white font-bold text-[9px] px-2 py-0.5 rounded-full">₹120/sq.ft</span>
                     </div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-slate-900 text-sm group-hover:text-emeraldBrand transition-colors">Modern Living Hall Ceiling</h3>
-                        <p class="text-slate-500 text-xs mt-1">Tap to inspect details</p>
+                    <div class="p-3.5">
+                        <h3 class="font-bold text-slate-900 text-xs sm:text-sm group-hover:text-emeraldBrand transition-colors">Modern Living Hall Ceiling</h3>
+                        <p class="text-slate-500 text-[11px] mt-0.5">Tap to inspect details</p>
                     </div>
                 </div>
 
-                <!-- Gallery Item 2 -->
                 <div onclick="openModal('Master Bedroom Ambient Ceiling', 'Minimalist dual-level step ceiling with ambient rim lighting designed for relaxed bedroom environments.', 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&q=80&w=1000')" 
-                     class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200 cursor-pointer group" data-aos="fade-up" data-aos-delay="100">
-                    <div class="h-60 overflow-hidden relative">
+                     class="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200 cursor-pointer group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-48 overflow-hidden relative">
                         <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&q=80&w=800" alt="Bedroom Ceiling" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <span class="absolute top-3 right-3 bg-emeraldBrand text-white font-black text-[10px] px-2.5 py-1 rounded-full">₹120/sq.ft</span>
+                        <span class="absolute top-2.5 right-2.5 bg-emeraldBrand text-white font-bold text-[9px] px-2 py-0.5 rounded-full">₹120/sq.ft</span>
                     </div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-slate-900 text-sm group-hover:text-emeraldBrand transition-colors">Master Bedroom Ambient Ceiling</h3>
-                        <p class="text-slate-500 text-xs mt-1">Tap to inspect details</p>
+                    <div class="p-3.5">
+                        <h3 class="font-bold text-slate-900 text-xs sm:text-sm group-hover:text-emeraldBrand transition-colors">Master Bedroom Ambient Ceiling</h3>
+                        <p class="text-slate-500 text-[11px] mt-0.5">Tap to inspect details</p>
                     </div>
                 </div>
 
-                <!-- Gallery Item 3 -->
                 <div onclick="openModal('Wooden Baffle Ceiling', 'Architectural slatted wooden ceiling with embedded linear profile lights ideal for dining areas and foyers.', 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=1000')" 
-                     class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-200 cursor-pointer group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="h-60 overflow-hidden relative">
+                     class="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200 cursor-pointer group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-48 overflow-hidden relative">
                         <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=800" alt="Wooden Baffle Ceiling" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <span class="absolute top-3 right-3 bg-amber-600 text-white font-black text-[10px] px-2.5 py-1 rounded-full">Woodwork</span>
+                        <span class="absolute top-2.5 right-2.5 bg-amber-600 text-white font-bold text-[9px] px-2 py-0.5 rounded-full">Woodwork</span>
                     </div>
-                    <div class="p-4">
-                        <h3 class="font-bold text-slate-900 text-sm group-hover:text-emeraldBrand transition-colors">Wooden Baffle Ceiling</h3>
-                        <p class="text-slate-500 text-xs mt-1">Tap to inspect details</p>
+                    <div class="p-3.5">
+                        <h3 class="font-bold text-slate-900 text-xs sm:text-sm group-hover:text-emeraldBrand transition-colors">Wooden Baffle Ceiling</h3>
+                        <p class="text-slate-500 text-[11px] mt-0.5">Tap to inspect details</p>
                     </div>
                 </div>
             </div>
@@ -468,121 +531,57 @@
     </section>
 
     <!-- Video Walkthroughs -->
-    <section id="videos" class="py-16 px-4 sm:px-6 bg-white">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center max-w-2xl mx-auto mb-10" data-aos="fade-up">
+    <section id="videos" class="py-14 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center max-w-xl mx-auto mb-8" data-aos="fade-up">
                 <span class="text-emeraldBrand font-extrabold text-xs uppercase tracking-widest block mb-1">Live Previews</span>
-                <h2 class="text-2xl sm:text-4xl font-extrabold text-slate-900">Video Walkthroughs</h2>
-                <p class="text-slate-600 text-xs sm:text-sm mt-2">Real site installations completed across Pune.</p>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Video Walkthroughs</h2>
+                <p class="text-slate-600 text-xs mt-1">Real site installations completed across Pune, Maharashtra.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-slate-50 rounded-2xl p-3 border border-slate-200" data-aos="fade-right">
-                    <div class="aspect-video w-full rounded-xl overflow-hidden bg-black">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div class="bg-slate-50 rounded-xl p-2.5 border border-slate-200" data-aos="fade-right">
+                    <div class="aspect-video w-full rounded-lg overflow-hidden bg-black">
                         <iframe class="w-full h-full" src="https://www.youtube.com/embed/S43iG8L7bK4" title="Gypsum Ceiling Installation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
-                    <h3 class="font-bold text-sm sm:text-base text-slate-900 mt-3">Gypsum Ceiling Installation & Profile Lighting</h3>
+                    <h3 class="font-bold text-xs sm:text-sm text-slate-900 mt-2.5">Gypsum Ceiling Installation & Profile Lighting</h3>
                 </div>
 
-                <div class="bg-slate-50 rounded-2xl p-3 border border-slate-200" data-aos="fade-left">
-                    <div class="aspect-video w-full rounded-xl overflow-hidden bg-black">
+                <div class="bg-slate-50 rounded-xl p-2.5 border border-slate-200" data-aos="fade-left">
+                    <div class="aspect-video w-full rounded-lg overflow-hidden bg-black">
                         <iframe class="w-full h-full" src="https://www.youtube.com/embed/5a83U-e-A0I" title="TV Unit Interior Design" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
-                    <h3 class="font-bold text-sm sm:text-base text-slate-900 mt-3">Living Room Wall Paneling & Media Niche</h3>
+                    <h3 class="font-bold text-xs sm:text-sm text-slate-900 mt-2.5">Living Room Wall Paneling & Media Niche</h3>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact & Quote Form Section -->
-    <section id="contact" class="py-16 px-4 sm:px-6 bg-slate-900 text-white relative">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-            
-            <div data-aos="fade-right">
-                <span class="text-amber-400 font-extrabold text-xs uppercase tracking-widest block mb-1">Get In Touch</span>
-                <h2 class="text-2xl sm:text-4xl font-extrabold mb-4 text-white">Contact Multi Decor</h2>
-                <p class="text-slate-300 text-xs sm:text-sm mb-6 leading-relaxed">
-                    Serving Dhanori, Lohegaon, Wagholi, Vimannagar, Baner, Wakad, Pimpri-Chinchwad, and across Pune & Maharashtra.
-                </p>
+    <!-- Demo Section (No Form) -->
+    <section id="contact" class="py-14 px-4 bg-slate-900 text-white relative">
+        <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+            <span class="text-amber-400 font-extrabold text-xs uppercase tracking-widest block mb-1">Demo Showcase</span>
+            <h2 class="text-2xl sm:text-4xl font-extrabold mb-3 text-white">Pune, Maharashtra, India</h2>
+            <p class="text-slate-300 text-xs sm:text-sm mb-6 max-w-xl mx-auto leading-relaxed">
+                This website is a interactive design demo for Multi Decor interior solutions across Pune, Maharashtra, India.
+            </p>
 
-                <div class="space-y-4">
-                    <a href="https://maps.google.com/?q=Dhanori+Jakat+Naka,+Lohegaon,+Pune+411047" target="_blank" class="flex items-center gap-4 bg-slate-800/90 p-4 rounded-xl border border-slate-700 hover:border-emeraldBrand transition-colors">
-                        <div class="w-10 h-10 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0 text-lg">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-white text-xs sm:text-sm">Main Office Location</h4>
-                            <p class="text-slate-300 text-[11px] sm:text-xs">Dhanori Jakat Naka, Lohegaon, Pune 411047, MH</p>
-                        </div>
-                    </a>
-
-                    <a href="mailto:noreplay@gmail.com" class="flex items-center gap-4 bg-slate-800/90 p-4 rounded-xl border border-slate-700 hover:border-emeraldBrand transition-colors">
-                        <div class="w-10 h-10 rounded-lg bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 text-lg">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-white text-xs sm:text-sm">Official Email</h4>
-                            <p class="text-slate-300 text-[11px] sm:text-xs">noreplay@gmail.com</p>
-                        </div>
-                    </a>
-
-                    <div class="flex items-center gap-4 bg-slate-800/90 p-4 rounded-xl border border-slate-700">
-                        <div class="w-10 h-10 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center shrink-0 text-lg">
-                            <i class="fas fa-clock"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-white text-xs sm:text-sm">Working Hours</h4>
-                            <p class="text-slate-300 text-[11px] sm:text-xs">Open 24 Hours • Mon to Sun</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
+                <a href="https://wa.me/9192multiservicesindia" target="_blank" class="btn-animated-primary px-5 py-2.5 text-xs sm:text-sm w-full sm:w-auto">
+                    <i class="fab fa-whatsapp text-base"></i> Demo WhatsApp Inquiry
+                </a>
+                <a href="mailto:noreplay@gmail.com" class="btn-animated-secondary px-5 py-2.5 text-xs sm:text-sm w-full sm:w-auto">
+                    <i class="fas fa-envelope text-emerald-400"></i> Direct Demo Email
+                </a>
             </div>
-
-            <!-- WhatsApp Quote Form -->
-            <div class="bg-white text-slate-900 rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-2xl" data-aos="fade-left">
-                <h3 class="text-xl sm:text-2xl font-extrabold text-slate-900 mb-1">Request Price Quote</h3>
-                <p class="text-slate-600 text-xs sm:text-sm font-medium mb-6">Receive an instant estimate directly on WhatsApp.</p>
-
-                <form id="quoteForm" class="space-y-4">
-                    <div>
-                        <label class="text-[11px] font-bold text-slate-700 uppercase mb-1 block">Your Full Name</label>
-                        <input type="text" id="custName" required placeholder="Enter full name" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-3 text-slate-900 font-bold focus:outline-none focus:border-emeraldBrand text-xs sm:text-sm">
-                    </div>
-
-                    <div>
-                        <label class="text-[11px] font-bold text-slate-700 uppercase mb-1 block">Phone Number</label>
-                        <input type="tel" id="custPhone" required placeholder="Enter mobile number" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-3 text-slate-900 font-bold focus:outline-none focus:border-emeraldBrand text-xs sm:text-sm">
-                    </div>
-
-                    <div>
-                        <label class="text-[11px] font-bold text-slate-700 uppercase mb-1 block">Select Service Requirement</label>
-                        <select id="custService" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-3 text-slate-900 font-bold focus:outline-none focus:border-emeraldBrand text-xs sm:text-sm">
-                            <option>Gypsum False Ceiling (₹120 / sq.ft)</option>
-                            <option>Designer Ceiling + Profile LED (₹145 / sq.ft)</option>
-                            <option>Living Room & TV Wall Decor</option>
-                            <option>Architectural Woodworks</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label class="text-[11px] font-bold text-slate-700 uppercase mb-1 block">Ceiling Area (Approx Sq.Ft)</label>
-                        <input type="number" id="custArea" placeholder="e.g. 600" class="w-full bg-slate-50 border border-slate-300 rounded-xl px-3.5 py-3 text-slate-900 font-bold focus:outline-none focus:border-emeraldBrand text-xs sm:text-sm">
-                    </div>
-
-                    <button type="submit" class="btn-primary w-full py-4 text-sm sm:text-base mt-2">
-                        <i class="fab fa-whatsapp text-lg"></i> Send WhatsApp Request
-                    </button>
-                </form>
-            </div>
-
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black text-slate-400 py-8 px-4 text-center text-xs border-t border-slate-800">
-        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p>© 2026 Multi Decor. All Rights Reserved. Contact: <a href="mailto:noreplay@gmail.com" class="text-emerald-400 underline">noreplay@gmail.com</a></p>
-            <div class="flex gap-4 text-lg">
+    <footer class="bg-black text-slate-400 py-6 px-4 text-center text-[11px] border-t border-slate-800">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-3">
+            <p>© 2026 Multi Decor • Pune, Maharashtra, India. Demo Purpose Only.</p>
+            <div class="flex gap-4 text-base">
                 <a href="https://wa.me/9192multiservicesindia" class="hover:text-emerald-400"><i class="fab fa-whatsapp"></i></a>
                 <a href="mailto:noreplay@gmail.com" class="hover:text-emerald-400"><i class="fas fa-envelope"></i></a>
             </div>
@@ -591,21 +590,21 @@
 
     <!-- Interactive Details Popup Modal -->
     <div id="infoModal" class="fixed inset-0 z-[1000] bg-slate-900/80 backdrop-blur-md hidden flex items-center justify-center p-4">
-        <div class="bg-white rounded-2xl max-w-lg w-full overflow-hidden shadow-2xl border border-slate-200 transform transition-all">
-            <div class="relative h-48 bg-slate-900">
+        <div class="bg-white rounded-xl max-w-md w-full overflow-hidden shadow-2xl border border-slate-200">
+            <div class="relative h-40 bg-slate-900">
                 <img id="modalImg" src="" alt="Detail Preview" class="w-full h-full object-cover">
-                <button onclick="closeModal()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-black transition-colors">
+                <button onclick="closeModal()" class="absolute top-2.5 right-2.5 w-7 h-7 rounded-full bg-black/60 text-white flex items-center justify-center hover:bg-black transition-colors text-xs">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
-            <div class="p-6">
-                <h3 id="modalTitle" class="text-xl font-extrabold text-slate-900 mb-2"></h3>
-                <p id="modalDesc" class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-6"></p>
-                <div class="flex gap-3">
-                    <a href="https://wa.me/9192multiservicesindia" target="_blank" class="btn-primary flex-1 py-3 text-xs">
-                        <i class="fab fa-whatsapp"></i> Order This Design
+            <div class="p-5">
+                <h3 id="modalTitle" class="text-base font-extrabold text-slate-900 mb-1.5"></h3>
+                <p id="modalDesc" class="text-slate-600 text-xs leading-relaxed mb-5"></p>
+                <div class="flex gap-2">
+                    <a href="https://wa.me/9192multiservicesindia" target="_blank" class="btn-animated-primary flex-1 py-2 text-xs">
+                        <i class="fab fa-whatsapp"></i> Inquire Design
                     </a>
-                    <button onclick="closeModal()" class="btn-secondary px-4 py-3 text-xs">
+                    <button onclick="closeModal()" class="btn-animated-secondary px-3 py-2 text-xs text-slate-800 border-slate-300">
                         Close
                     </button>
                 </div>
@@ -616,7 +615,7 @@
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 700, once: true });
+        AOS.init({ duration: 600, once: true });
 
         // Modal Controls
         function openModal(title, description, imgUrl) {
@@ -630,22 +629,21 @@
             document.getElementById('infoModal').classList.add('hidden');
         }
 
-        // WhatsApp Form Auto Redirect
-        document.getElementById('quoteForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            var name = document.getElementById('custName').value;
-            var phone = document.getElementById('custPhone').value;
-            var service = document.getElementById('custService').value;
-            var area = document.getElementById('custArea').value || 'Not specified';
+        // Typing Effect JS for Hero Headline
+        const textToType = "Crafting Architectural Elegance For Your Spaces";
+        const animatedTextElement = document.getElementById("animatedText");
+        let charIndex = 0;
 
-            var message = `Hello Multi Decor,%0A%0A` +
-                          `I want to inquire about interior services:%0A` +
-                          `*Name:* ${encodeURIComponent(name)}%0A` +
-                          `*Phone:* ${encodeURIComponent(phone)}%0A` +
-                          `*Service:* ${encodeURIComponent(service)}%0A` +
-                          `*Area:* ${encodeURIComponent(area)} sq.ft`;
+        function typeWriter() {
+            if (charIndex < textToType.length) {
+                animatedTextElement.textContent += textToType.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, 50);
+            }
+        }
 
-            window.open(`https://wa.me/9192multiservicesindia?text=${message}`, '_blank');
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(typeWriter, 400);
         });
     </script>
 </body>
