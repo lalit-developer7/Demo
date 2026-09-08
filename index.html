@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Interior & False Ceiling Services | Modern Decor Demo</title>
+    <title>Interior Design & False Ceiling Showcase | Modern Decor Demo</title>
     
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -34,7 +34,6 @@
     </script>
 
     <style>
-        /* Mobile Horizontal Overflow & Cut-off Fixes */
         html, body {
             max-width: 100%;
             overflow-x: hidden !important;
@@ -42,7 +41,6 @@
             padding: 0;
         }
 
-        /* Animated Hero Background Gradient & Zoom Effect */
         .hero-bg-animated {
             position: relative;
             background: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(4, 120, 87, 0.8) 100%);
@@ -64,7 +62,6 @@
             100% { transform: scale(1.1); }
         }
 
-        /* Glowing Floating Balls Animation */
         .glow-orb {
             position: absolute;
             border-radius: 50%;
@@ -78,7 +75,6 @@
             100% { transform: translate(30px, -40px) scale(1.15); }
         }
 
-        /* Typing & Shimmer Typography Effects */
         .typing-cursor::after {
             content: '|';
             animation: blink 0.8s infinite;
@@ -104,7 +100,6 @@
             to { background-position: 200% center; }
         }
 
-        /* Standardized Compact Animated Buttons */
         .btn-animated-primary {
             background: linear-gradient(135deg, #059669 0%, #047857 100%);
             color: #ffffff;
@@ -161,18 +156,18 @@
             transform: translateY(-2px);
         }
 
-        .whatsapp-float {
+        .floating-email-btn {
             position: fixed;
             bottom: 20px;
             right: 16px;
             z-index: 999;
-            animation: pulseGreen 2s infinite;
+            animation: pulseEmerald 2s infinite;
         }
 
-        @keyframes pulseGreen {
-            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
-            70% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        @keyframes pulseEmerald {
+            0% { box-shadow: 0 0 0 0 rgba(5, 150, 105, 0.7); }
+            70% { box-shadow: 0 0 0 14px rgba(5, 150, 105, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(5, 150, 105, 0); }
         }
     </style>
 </head>
@@ -180,7 +175,7 @@
 
     <!-- Floating Action Button -->
     <a href="mailto:noReplay@gmail.com" 
-       class="whatsapp-float bg-emerald-500 text-white w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center text-xl sm:text-2xl shadow-xl hover:scale-110 transition-transform" 
+       class="floating-email-btn bg-emerald-600 text-white w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center text-xl sm:text-2xl shadow-xl hover:scale-110 transition-transform" 
        title="Email Inquiry">
         <i class="fas fa-envelope"></i>
     </a>
@@ -188,7 +183,6 @@
     <!-- Navigation Bar -->
     <header class="fixed top-0 left-0 right-0 z-50 px-3 py-2.5 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
         <div class="max-w-6xl mx-auto flex items-center justify-between">
-            <!-- Brand Logo -->
             <a href="#" class="flex items-center gap-2 group shrink-0">
                 <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-emerald-600 via-emerald-500 to-amber-400 flex items-center justify-center text-white text-sm font-black shadow-md group-hover:rotate-6 transition-transform">
                     <i class="fas fa-couch"></i>
@@ -199,7 +193,6 @@
                 </div>
             </a>
 
-            <!-- Extended Desktop Menu -->
             <nav class="hidden lg:flex items-center gap-6 text-[11px] font-bold uppercase tracking-wider text-slate-700">
                 <a href="#home" class="hover:text-emeraldBrand transition-colors">Home</a>
                 <a href="#about" class="hover:text-emeraldBrand transition-colors">About</a>
@@ -210,7 +203,6 @@
                 <a href="#contact" class="hover:text-emeraldBrand transition-colors">Contact</a>
             </nav>
 
-            <!-- Actions -->
             <div class="flex items-center gap-2 shrink-0">
                 <a href="mailto:noReplay@gmail.com" class="btn-animated-primary px-3.5 py-1.5 text-xs">
                     <i class="fas fa-envelope text-sm"></i> Contact Us
@@ -219,36 +211,29 @@
         </div>
     </header>
 
-    <!-- Animated Premium Hero Section -->
+    <!-- Animated Hero Section -->
     <section id="home" class="hero-bg-animated pt-24 sm:pt-28 pb-16 px-4 text-white relative min-h-[85vh] flex items-center">
-        <!-- Animated Background Image -->
         <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=2000" alt="Ceiling Interior Background" class="hero-bg-image">
-
-        <!-- Dark Gradient Overlay -->
         <div class="absolute inset-0 bg-gradient-to-r from-slate-950/95 via-slate-900/85 to-slate-950/90 z-0"></div>
 
-        <!-- Floating Orbs -->
         <div class="glow-orb top-10 left-10 w-48 h-48 bg-emerald-500/25 z-0"></div>
         <div class="glow-orb bottom-10 right-10 w-64 h-64 bg-amber-500/20 z-0"></div>
 
         <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10 w-full">
-            
             <div class="lg:col-span-7" data-aos="fade-right">
                 <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-[11px] font-bold mb-3 backdrop-blur-md">
                     <i class="fas fa-location-dot text-amber-400 text-xs"></i>
                     <span>Pune, India</span>
                 </div>
 
-                <!-- Animated Typo Headline -->
                 <h1 class="text-2xl sm:text-4xl lg:text-5xl font-extrabold leading-tight mb-3">
                     <span id="animatedText" class="gold-shimmer typing-cursor"></span>
                 </h1>
 
                 <p class="text-slate-300 font-normal text-xs sm:text-sm lg:text-base mb-6 leading-relaxed max-w-xl">
-                    Demonstration showcase for premium Gypsum False Ceilings, modern profile lightings, living room wall treatments, and custom interior carpentry in Pune, India.
+                    Demonstration showcase for Gypsum False Ceilings, modular kitchens, ambient lighting concepts, custom TV unit louvers, and interior carpentry executions in Pune, India.
                 </p>
 
-                <!-- Compact Animated Action Buttons -->
                 <div class="flex flex-wrap items-center gap-3">
                     <a href="mailto:noReplay@gmail.com" class="btn-animated-primary px-4 py-2.5 text-xs sm:text-sm">
                         <i class="fas fa-paper-plane text-sm"></i> Send Inquiry Email
@@ -258,7 +243,6 @@
                     </button>
                 </div>
 
-                <!-- Metrics Panel -->
                 <div class="grid grid-cols-3 gap-3 mt-8 pt-4 border-t border-slate-700/60 max-w-lg">
                     <div>
                         <p class="text-xl sm:text-2xl font-extrabold text-amber-400">500+</p>
@@ -275,11 +259,9 @@
                 </div>
             </div>
 
-            <!-- Compact Glassmorphism Showcase Card -->
             <div class="lg:col-span-5" data-aos="fade-left">
                 <div class="relative group max-w-md mx-auto">
                     <div class="relative bg-slate-900/80 backdrop-blur-xl p-3 rounded-2xl border border-white/10 shadow-2xl overflow-hidden">
-                        
                         <div class="relative rounded-xl overflow-hidden bg-slate-950">
                             <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=800" 
                                  alt="Sample Interior Design" 
@@ -287,7 +269,7 @@
                             
                             <div class="absolute top-2.5 left-2.5 bg-slate-900/85 backdrop-blur-md border border-amber-400/30 px-2.5 py-0.5 rounded-full flex items-center gap-1.5 shadow-md">
                                 <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
-                                <span class="text-amber-300 text-[9px] font-bold uppercase tracking-wider">Featured Interior</span>
+                                <span class="text-amber-300 text-[9px] font-bold uppercase tracking-wider">Featured Concept</span>
                             </div>
                         </div>
 
@@ -306,7 +288,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -320,10 +301,10 @@
                 <span class="text-emeraldBrand font-extrabold text-xs uppercase tracking-widest block mb-1">About Demo Showcase</span>
                 <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-3">Architectural Ceiling & Interior Solutions</h2>
                 <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-3">
-                    Located in Pune, India, this website showcases modern Gypsum False Ceiling installations, wall paneling, and interior woodwork concepts for residential and commercial spaces.
+                    Based in Pune, India, this interactive showcase displays modern false ceiling engineering, decorative TV wall panels, modular kitchen carpentry, and ambient lighting layouts.
                 </p>
                 <p class="text-slate-600 text-xs sm:text-sm leading-relaxed mb-5">
-                    We demonstrate modern design possibilities integrating ambient cove lighting, LED profile channels, and premium acoustic wall treatments.
+                    Explore modern design concepts including concealed LED profiles, charcoal louvers, acoustic ceiling slats, and luxury marble PVC paneling.
                 </p>
                 
                 <div class="grid grid-cols-2 gap-3 mb-5">
@@ -334,7 +315,7 @@
                         <i class="fas fa-check-circle text-emeraldBrand"></i> Precision Lighting Slots
                     </div>
                     <div class="flex items-center gap-2 text-xs font-bold text-slate-800">
-                        <i class="fas fa-check-circle text-emeraldBrand"></i> Quality Materials
+                        <i class="fas fa-check-circle text-emeraldBrand"></i> Modular Carpentry
                     </div>
                     <div class="flex items-center gap-2 text-xs font-bold text-slate-800">
                         <i class="fas fa-check-circle text-emeraldBrand"></i> Seamless Execution
@@ -354,45 +335,84 @@
             <div class="text-center max-w-xl mx-auto mb-10" data-aos="fade-up">
                 <span class="text-emeraldBrand font-extrabold text-xs uppercase tracking-widest block mb-1">Interactive Services</span>
                 <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Core Services Overview</h2>
-                <p class="text-slate-600 text-xs mt-1">Click on any card below to view specifications.</p>
+                <p class="text-slate-600 text-xs mt-1">Click on any service card below to inspect full technical specifications.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-                <div onclick="openModal('Gypsum False Ceiling', 'Includes high-grade Gypsum sheets, galvanised GI channels, jointing compound, and dual-layer primer preparation.', 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1000')" 
+                <div onclick="openModal('Gypsum False Ceiling', 'Includes high-grade Gypsum sheets, galvanised GI channels, jointing compound, concealed profile tracks, and dual-layer primer preparation.', 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1000')" 
                      class="bg-white p-5 rounded-xl cursor-pointer hover:-translate-y-1 transition-all duration-300 group border border-slate-200 shadow-sm" data-aos="fade-up">
                     <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emeraldBrand flex items-center justify-center text-lg font-bold mb-3 group-hover:scale-110 transition-transform">
                         <i class="fas fa-layer-group"></i>
                     </div>
                     <h3 class="font-bold text-base text-slate-900 mb-1.5">Gypsum False Ceiling</h3>
-                    <p class="text-slate-600 text-xs mb-3">Designer cove lighting, floating central steps, and LED profile light slots.</p>
+                    <p class="text-slate-600 text-xs mb-3">Designer cove lighting, floating central steps, magnetic track lights, and LED profile channels.</p>
                     <div class="flex items-center justify-between text-xs font-bold text-emeraldBrand">
                         <span>Starting ₹120 / sq.ft</span>
                         <span>Details <i class="fas fa-chevron-right ml-1 text-[10px]"></i></span>
                     </div>
                 </div>
 
-                <div onclick="openModal('Living Room & TV Wall Decor', 'Complete living room makeovers with charcoal fluted paneling, marble-finish PVC sheets, and integrated backlit TV niches.', 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1000')" 
+                <div onclick="openModal('Living Room & TV Wall Decor', 'Complete living room makeovers with charcoal fluted paneling, marble-finish PVC sheets, acoustic slat panels, and integrated backlit TV niches.', 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1000')" 
                      class="bg-white p-5 rounded-xl cursor-pointer hover:-translate-y-1 transition-all duration-300 group border border-slate-200 shadow-sm" data-aos="fade-up" data-aos-delay="100">
                     <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center text-lg font-bold mb-3 group-hover:scale-110 transition-transform">
                         <i class="fas fa-tv"></i>
                     </div>
-                    <h3 class="font-bold text-base text-slate-900 mb-1.5">TV Wall Decor</h3>
-                    <p class="text-slate-600 text-xs mb-3">Backlit marble PVC panels, fluted wall louvers, and modern media units.</p>
+                    <h3 class="font-bold text-base text-slate-900 mb-1.5">TV Wall & Paneling</h3>
+                    <p class="text-slate-600 text-xs mb-3">Backlit marble PVC panels, charcoal fluted wall louvers, and sleek media storage units.</p>
                     <div class="flex items-center justify-between text-xs font-bold text-emeraldBrand">
                         <span>Custom Package</span>
                         <span>Details <i class="fas fa-chevron-right ml-1 text-[10px]"></i></span>
                     </div>
                 </div>
 
-                <div onclick="openModal('Architectural Woodworks', 'Exterior wood-finish ceilings, indoor slatted baffle ceilings, modular kitchen cabinets, and customized wardrobe carpentry.', 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=1000')" 
+                <div onclick="openModal('Architectural Woodworks', 'Exterior wood-finish ceilings, indoor slatted baffle ceilings, acrylic modular kitchens, and customized wardrobe carpentry.', 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&q=80&w=1000')" 
                      class="bg-white p-5 rounded-xl cursor-pointer hover:-translate-y-1 transition-all duration-300 group border border-slate-200 shadow-sm" data-aos="fade-up" data-aos-delay="200">
                     <div class="w-10 h-10 rounded-lg bg-slate-100 text-slate-800 flex items-center justify-center text-lg font-bold mb-3 group-hover:scale-110 transition-transform">
                         <i class="fas fa-tree"></i>
                     </div>
                     <h3 class="font-bold text-base text-slate-900 mb-1.5">Architectural Woodworks</h3>
-                    <p class="text-slate-600 text-xs mb-3">Slatted wooden baffle ceilings, veneer paneling, and modular setups.</p>
+                    <p class="text-slate-600 text-xs mb-3">Slatted wooden baffle ceilings, veneer wall paneling, and modular storage setups.</p>
                     <div class="flex items-center justify-between text-xs font-bold text-emeraldBrand">
                         <span>Premium Grade</span>
+                        <span>Details <i class="fas fa-chevron-right ml-1 text-[10px]"></i></span>
+                    </div>
+                </div>
+
+                <div onclick="openModal('Modular Kitchen & Wardrobes', 'Marine-ply modular kitchens with soft-close tandem boxes, acrylic finishes, and floor-to-ceiling sliding wardrobes.', 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&q=80&w=1000')" 
+                     class="bg-white p-5 rounded-xl cursor-pointer hover:-translate-y-1 transition-all duration-300 group border border-slate-200 shadow-sm" data-aos="fade-up">
+                    <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emeraldBrand flex items-center justify-center text-lg font-bold mb-3 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-kitchen-set"></i>
+                    </div>
+                    <h3 class="font-bold text-base text-slate-900 mb-1.5">Modular Kitchens</h3>
+                    <p class="text-slate-600 text-xs mb-3">Custom acrylic and laminate kitchens with ergonomic hardware and quartz countertops.</p>
+                    <div class="flex items-center justify-between text-xs font-bold text-emeraldBrand">
+                        <span>Custom Layout</span>
+                        <span>Details <i class="fas fa-chevron-right ml-1 text-[10px]"></i></span>
+                    </div>
+                </div>
+
+                <div onclick="openModal('Ambient Profile Lighting', 'Recessed magnetic profile tracks, COB strip lights, indirect cove lighting, and smart dimmable controllers.', 'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&q=80&w=1000')" 
+                     class="bg-white p-5 rounded-xl cursor-pointer hover:-translate-y-1 transition-all duration-300 group border border-slate-200 shadow-sm" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center text-lg font-bold mb-3 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3 class="font-bold text-base text-slate-900 mb-1.5">Profile Lighting</h3>
+                    <p class="text-slate-600 text-xs mb-3">Linear architectural profile slots, magnetic tracks, and warm mood light planning.</p>
+                    <div class="flex items-center justify-between text-xs font-bold text-emeraldBrand">
+                        <span>Smart Setup</span>
+                        <span>Details <i class="fas fa-chevron-right ml-1 text-[10px]"></i></span>
+                    </div>
+                </div>
+
+                <div onclick="openModal('Commercial Acoustic Ceilings', 'Sound-absorbing grid tile ceilings, wooden acoustic wall panels, and baffle systems designed for offices and halls.', 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1000')" 
+                     class="bg-white p-5 rounded-xl cursor-pointer hover:-translate-y-1 transition-all duration-300 group border border-slate-200 shadow-sm" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-10 h-10 rounded-lg bg-slate-100 text-slate-800 flex items-center justify-center text-lg font-bold mb-3 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="font-bold text-base text-slate-900 mb-1.5">Acoustic & Grid Ceilings</h3>
+                    <p class="text-slate-600 text-xs mb-3">High-performance acoustic tiles for offices, conference halls, and commercial spaces.</p>
+                    <div class="flex items-center justify-between text-xs font-bold text-emeraldBrand">
+                        <span>Commercial Grade</span>
                         <span>Details <i class="fas fa-chevron-right ml-1 text-[10px]"></i></span>
                     </div>
                 </div>
@@ -406,7 +426,7 @@
             <div class="text-center max-w-xl mx-auto mb-10" data-aos="fade-up">
                 <span class="text-emeraldBrand font-extrabold text-xs uppercase tracking-widest block mb-1">Standard Rates</span>
                 <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Pricing Packages</h2>
-                <p class="text-slate-600 text-xs mt-1">Sample pricing plans for modern ceiling and interior projects.</p>
+                <p class="text-slate-600 text-xs mt-1">Sample pricing tiers for ceiling and interior design projects.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -462,7 +482,7 @@
                             <li><i class="fas fa-check text-emeraldBrand mr-1.5"></i> Wooden Baffle Ceiling</li>
                             <li><i class="fas fa-check text-emeraldBrand mr-1.5"></i> Backlit Marble PVC TV Units</li>
                             <li><i class="fas fa-check text-emeraldBrand mr-1.5"></i> Custom Fluted Louvers</li>
-                            <li><i class="fas fa-check text-emeraldBrand mr-1.5"></i> Architectural Lighting Setup</li>
+                            <li><i class="fas fa-check text-emeraldBrand mr-1.5"></i> Modular Kitchen & Furniture</li>
                         </ul>
                     </div>
                     <a href="mailto:noReplay@gmail.com?subject=Custom%20Luxury%20Interior%20Quote" class="btn-animated-secondary w-full py-2 text-xs text-slate-800 border-slate-300">
@@ -473,12 +493,12 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
+    <!-- Expanded Gallery Section -->
     <section id="gallery" class="py-14 px-4 bg-slate-100/80">
         <div class="max-w-6xl mx-auto">
             <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 gap-3">
                 <div>
-                    <span class="text-emeraldBrand font-extrabold text-xs uppercase tracking-widest block mb-1">Photo Gallery</span>
+                    <span class="text-emeraldBrand font-extrabold text-xs uppercase tracking-widest block mb-1">Expanded Showcase</span>
                     <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Design Gallery</h2>
                 </div>
                 <a href="mailto:noReplay@gmail.com" class="btn-animated-secondary px-3.5 py-1.5 text-xs text-slate-800 border-slate-300">
@@ -522,32 +542,75 @@
                         <p class="text-slate-500 text-[11px] mt-0.5">Tap to inspect details</p>
                     </div>
                 </div>
+
+                <div onclick="openModal('Marble TV Wall Paneling', 'Backlit UV sheet marble backdrop flanked by dark charcoal fluted louvers and floating console shelves.', 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=1000')" 
+                     class="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200 cursor-pointer group" data-aos="fade-up">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=800" alt="TV Wall Paneling" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-2.5 right-2.5 bg-slate-900 text-white font-bold text-[9px] px-2 py-0.5 rounded-full">Wall Decor</span>
+                    </div>
+                    <div class="p-3.5">
+                        <h3 class="font-bold text-slate-900 text-xs sm:text-sm group-hover:text-emeraldBrand transition-colors">Marble TV Wall Paneling</h3>
+                        <p class="text-slate-500 text-[11px] mt-0.5">Tap to inspect details</p>
+                    </div>
+                </div>
+
+                <div onclick="openModal('Modern Acrylic Kitchen', 'Handleless dual-tone acrylic modular kitchen with soft-close tandem drawers and LED under-cabinet strip lighting.', 'https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&q=80&w=1000')" 
+                     class="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200 cursor-pointer group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&q=80&w=800" alt="Modular Kitchen" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-2.5 right-2.5 bg-emeraldBrand text-white font-bold text-[9px] px-2 py-0.5 rounded-full">Modular</span>
+                    </div>
+                    <div class="p-3.5">
+                        <h3 class="font-bold text-slate-900 text-xs sm:text-sm group-hover:text-emeraldBrand transition-colors">Modern Acrylic Modular Kitchen</h3>
+                        <p class="text-slate-500 text-[11px] mt-0.5">Tap to inspect details</p>
+                    </div>
+                </div>
+
+                <div onclick="openModal('Recessed Profile Track Lighting', 'Seamless linear aluminum profile channels fitted into gypsum ceilings for clean architectural lighting.', 'https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&q=80&w=1000')" 
+                     class="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-200 cursor-pointer group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1507089947368-19c1da9775ae?auto=format&fit=crop&q=80&w=800" alt="Profile Light Ceiling" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-2.5 right-2.5 bg-amber-500 text-white font-bold text-[9px] px-2 py-0.5 rounded-full">Lighting</span>
+                    </div>
+                    <div class="p-3.5">
+                        <h3 class="font-bold text-slate-900 text-xs sm:text-sm group-hover:text-emeraldBrand transition-colors">Recessed Profile Track Lighting</h3>
+                        <p class="text-slate-500 text-[11px] mt-0.5">Tap to inspect details</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Video Walkthroughs -->
+    <!-- Expanded Video Section -->
     <section id="videos" class="py-14 px-4 bg-white">
         <div class="max-w-6xl mx-auto">
             <div class="text-center max-w-xl mx-auto mb-8" data-aos="fade-up">
-                <span class="text-emeraldBrand font-extrabold text-xs uppercase tracking-widest block mb-1">Live Previews</span>
-                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Video Walkthroughs</h2>
-                <p class="text-slate-600 text-xs mt-1">Sample project walkthroughs and installation demonstrations.</p>
+                <span class="text-emeraldBrand font-extrabold text-xs uppercase tracking-widest block mb-1">Video Demonstrations</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900">Project Walkthroughs</h2>
+                <p class="text-slate-600 text-xs mt-1">Curated interior and false ceiling design walkthrough videos.</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                <div class="bg-slate-50 rounded-xl p-2.5 border border-slate-200" data-aos="fade-right">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                <div class="bg-slate-50 rounded-xl p-2.5 border border-slate-200" data-aos="fade-up">
                     <div class="aspect-video w-full rounded-lg overflow-hidden bg-black">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/S43iG8L7bK4" title="Gypsum Ceiling Installation" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/S43iG8L7bK4" title="Gypsum Ceiling Walkthrough" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <h3 class="font-bold text-xs sm:text-sm text-slate-900 mt-2.5">Gypsum Ceiling Installation & Profile Lighting</h3>
                 </div>
 
-                <div class="bg-slate-50 rounded-xl p-2.5 border border-slate-200" data-aos="fade-left">
+                <div class="bg-slate-50 rounded-xl p-2.5 border border-slate-200" data-aos="fade-up" data-aos-delay="100">
                     <div class="aspect-video w-full rounded-lg overflow-hidden bg-black">
-                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/5a83U-e-A0I" title="TV Unit Interior Design" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/5a83U-e-A0I" title="Living Room Wall Paneling" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                     <h3 class="font-bold text-xs sm:text-sm text-slate-900 mt-2.5">Living Room Wall Paneling & Media Niche</h3>
+                </div>
+
+                <div class="bg-slate-50 rounded-xl p-2.5 border border-slate-200" data-aos="fade-up" data-aos-delay="200">
+                    <div class="aspect-video w-full rounded-lg overflow-hidden bg-black">
+                        <iframe class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Modern Interior Ideas" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <h3 class="font-bold text-xs sm:text-sm text-slate-900 mt-2.5">Full Home Interior & Lighting Design Concept</h3>
                 </div>
             </div>
         </div>
@@ -559,7 +622,7 @@
             <span class="text-amber-400 font-extrabold text-xs uppercase tracking-widest block mb-1">Demo Showcase</span>
             <h2 class="text-2xl sm:text-4xl font-extrabold mb-3 text-white">Pune, India</h2>
             <p class="text-slate-300 text-xs sm:text-sm mb-6 max-w-xl mx-auto leading-relaxed">
-                This is a dummy website designed purely for demonstration purposes.
+                This is a dummy website designed purely for project demonstration purposes.
             </p>
 
             <div class="flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -609,7 +672,6 @@
     <script>
         AOS.init({ duration: 600, once: true });
 
-        // Modal Controls
         function openModal(title, description, imgUrl) {
             document.getElementById('modalTitle').innerText = title;
             document.getElementById('modalDesc').innerText = description;
@@ -621,7 +683,6 @@
             document.getElementById('infoModal').classList.add('hidden');
         }
 
-        // Typing Effect JS for Hero Headline
         const textToType = "Crafting Architectural Elegance For Your Spaces";
         const animatedTextElement = document.getElementById("animatedText");
         let charIndex = 0;
